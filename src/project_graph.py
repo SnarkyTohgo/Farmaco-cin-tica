@@ -30,7 +30,11 @@ def euler(t0,mi0,mp0,h,n):
     mp=mp0
     tlist = []
     mplist = []
+    i = 0
     while(t<n):
+        i+=1
+        if i%1000000 == 0:
+            print("Euler: "+str(math.trunc((t/n)*100))+"% complete")
         mi+=dmidt(t,mi)*h
         mp+=dmpdt(mi,mp)*h
         t+=h
@@ -44,8 +48,8 @@ def euler(t0,mi0,mp0,h,n):
         tlist.append(t)
         mplist.append(mp)
 #        print("i: " + str(i)+ "  mi: " + str(mi)+" mp: " + str(mp))
+    print("Euler: 100% complete")
     plt.plot(tlist,mplist)
-
 
 
 def rungaKuta(t0,mi0,mp0,h, tf):
@@ -60,8 +64,12 @@ def rungaKuta(t0,mi0,mp0,h, tf):
     mia = 0
     mpa = 0
 
+    i = 0
     err = 0
     while(t<tf):
+        i+=1
+        if i%1000000 == 0:
+            print("RK2: "+str(math.trunc((t/tf)*100))+"% complete")
         T.append(t)
         MP.append(mp)
         mil = dmidt(t,mi)
@@ -83,13 +91,18 @@ def rungaKuta(t0,mi0,mp0,h, tf):
         t += h
     T.append(t)
     MP.append(mp)
+    print("RK2: 100% complete")
     plt.plot(T,MP)
 
 
 def runga_kutta_4(t, mi, mp, h, tf):
     T = []
     MP = []
+    i=0
     while(t < tf):
+        i+=1
+        if i%1000000 == 0:
+            print("RK4: "+str(math.trunc((t/tf)*100))+"% complete")
         T.append(t)
         MP.append(mp)
         d1mi = h* dmidt(t,mi)
@@ -125,6 +138,7 @@ def runga_kutta_4(t, mi, mp, h, tf):
         t += h
     T.append(t)
     MP.append(mp)
+    print("RK4: 100% complete")
     plt.plot(T,MP)
 
 #    print("X = %.5f || Y = %.5f" %(x, y))
@@ -133,6 +147,6 @@ def runga_kutta_4(t, mi, mp, h, tf):
 
 
 
-rungaKuta(0,0,0,0.1,24)
-euler(0,0,0,0.1,24)
-runga_kutta_4(0,0,0,0.1,24)
+rungaKuta(0,0,0,0.1,24*365)
+euler(0,0,0,0.1,24*365)
+runga_kutta_4(0,0,0,0.1,24*365)
