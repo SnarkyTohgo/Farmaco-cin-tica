@@ -1,3 +1,4 @@
+import time
 import math
 import matplotlib.pyplot as plt
 
@@ -265,16 +266,17 @@ def main():
     '''
 
     print("\nEULER: \n")
-    euler (0, 0, 0, 0.1, 24 * 365)
+    euler(0, 0, 0, 0.1, 24*365)
     print("-"*100+"\n")
 
     print("RK2: \n")
-    runge_kutta (0, 0, 0, 0.1, 24 * 365)
+    runge_kutta(0, 0, 0, 0.1, 24 * 365)
     print("-"*100+"\n")
 
     print("RK4: \n")
-    runge_kutta_4 (0, 0, 0, 0.1, 24 * 365)
+    runge_kutta_4(0, 0, 0, 0.1, 24 * 365)
     print("-"*100+"\n")
 
-
+start_time = time.time()
 main()
+print("---%s seconds --- " % (time.time() - start_time))
