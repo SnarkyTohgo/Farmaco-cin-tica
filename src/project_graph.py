@@ -95,9 +95,16 @@ def rungaKuta(t0,mi0,mp0,h, tf):
     plt.plot(T,MP)
 
 
-def runga_kutta_4(t, mi, mp, h, tf):
+def runga_kutta_4(t0, mi0, mp0, h, tf):
+    t = t0
+    mi = mi0
+    mp = mp0
     T = []
     MP = []
+    
+    pre_mp = 0
+    k = 0
+    
     i=0
     while(t < tf):
         i+=1
@@ -116,10 +123,18 @@ def runga_kutta_4(t, mi, mp, h, tf):
         deltay_mi = d1mi/6 + d2mi/3 + d3mi/3 + d4mi/6
         deltay_mp = d1mp/6 + d2mp/3 + d3mp/3 + d4mp/6
 
+#codigo de calculo de maximos e minimos locais
+        if ((pre_mp < mp) and (mp > mp + deltay_mp) or (pre_mp > mp) and (mp < mp + deltay_mp)):
+            if mp>mp+deltay_mp:
+                k+=1
+            print(k,t,mp)
+        pre_mp = mp
+
+        
         mi += deltay_mi
         mp += deltay_mp
         t += h
-    while(t < tf+100):
+    while(mp>1):
         T.append(t)
         MP.append(mp)
         d1mi = h* dmidt_after(t,mi)
@@ -138,15 +153,16 @@ def runga_kutta_4(t, mi, mp, h, tf):
         t += h
     T.append(t)
     MP.append(mp)
+    print(t-tf)
     print("RK4: 100% complete")
     plt.plot(T,MP)
+    return mp
 
 #    print("X = %.5f || Y = %.5f" %(x, y))
-    return y
 
 
 
 
-rungaKuta(0,0,0,0.1,24*365)
-euler(0,0,0,0.1,24*365)
-runga_kutta_4(0,0,0,0.1,24*365)
+#rungaKuta(0,0,0,0.1,72)
+#euler(0,0,0,0.1,72)
+runga_kutta_4(0,0,0,0.0001,24*10)
