@@ -102,6 +102,7 @@ def euler(t0, mi0, mp0, h, n):
 
     print("Euler: 100% complete")
     plt.plot(tlist, mplist)
+    plt.show()
 
 
 def runge_kutta(t0, mi0, mp0, h, tf):
@@ -162,6 +163,7 @@ def runge_kutta(t0, mi0, mp0, h, tf):
 
     print("RK2: 100% complete")
     plt.plot(T, MP)
+    plt.show()
 
 
 def runge_kutta_4(t, mi, mp, h, tf):
@@ -238,6 +240,7 @@ def runge_kutta_4(t, mi, mp, h, tf):
 
     print("RK4: 100% complete")
     plt.plot(T, MP)
+    plt.show()
 
 
 
@@ -247,15 +250,29 @@ def main():
     Ka = newtonPrecision(1, 0.000000000000001)
     print("Ka: ", Ka)
 
+    '''
+    Simulação de 365 dias:
+        tf = 24*365
+        
+    Simulação de 15 dias: 
+        tf = 24*15
+    
+    Simulação de 7 dias:
+        tf = 24*7
+        
+    Simulação de 1 dia: 
+        tf = 24 
+    '''
+
     print("\nEULER: \n")
     euler (0, 0, 0, 0.1, 24 * 365)
     print("-"*100+"\n")
 
-    print("\RK2: \n")
+    print("RK2: \n")
     runge_kutta (0, 0, 0, 0.1, 24 * 365)
     print("-"*100+"\n")
 
-    print("\RK4: \n")
+    print("RK4: \n")
     runge_kutta_4 (0, 0, 0, 0.1, 24 * 365)
     print("-"*100+"\n")
 
