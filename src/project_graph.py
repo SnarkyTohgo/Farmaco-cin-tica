@@ -123,7 +123,7 @@ def runga_kutta_4(t0, mi0, mp0, h, tf):
         deltay_mi = d1mi/6 + d2mi/3 + d3mi/3 + d4mi/6
         deltay_mp = d1mp/6 + d2mp/3 + d3mp/3 + d4mp/6
 
-#codigo de calculo de maximos e minimos locais
+        #codigo de calculo de maximos e minimos locais
         if ((pre_mp < mp) and (mp > mp + deltay_mp) or (pre_mp > mp) and (mp < mp + deltay_mp)):
             if mp>mp+deltay_mp:
                 k+=1
